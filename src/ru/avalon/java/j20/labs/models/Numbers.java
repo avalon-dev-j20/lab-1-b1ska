@@ -14,7 +14,7 @@ public final class Numbers {
      * @param values массив чисел
      * @return сумма элементов массива
      */
-    public static int sum(int[] values) {
+    public static int sum(Integer[] values) {
         int sum = 0;
         for (int value : values) sum += value;
         return sum;
@@ -27,7 +27,7 @@ public final class Numbers {
      * @param values массив значений
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
-    public static double avg(int[] values) {
+    public static double avg(Integer[] values) {
         return (double) sum(values) / values.length;
     }
 
@@ -48,7 +48,7 @@ public final class Numbers {
      * @param values массив значений
      * @return максимальное значение массива
      */
-    public static int max(int[] values) {
+    public static int max(Integer[] values) {
         int result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = max(result, values[i]);
@@ -73,7 +73,7 @@ public final class Numbers {
      * @param values массив значений
      * @return минимальное значение массива
      */
-    public static int min(int[] values) {
+    public static int min(Integer[] values) {
         int result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = min(result, values[i]);

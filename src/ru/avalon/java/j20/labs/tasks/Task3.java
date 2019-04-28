@@ -1,8 +1,8 @@
 package ru.avalon.java.j20.labs.tasks;
 
 import ru.avalon.java.j20.labs.Task;
-
 import java.util.Iterator;
+import ru.avalon.java.j20.labs.models.Fibonacci;
 
 /**
  * Задание №3
@@ -13,6 +13,18 @@ public class Task3 implements Task {
 
     @Override
     public void run() {
+
+        Fibonacci fibo = new Fibonacci(20);
+        int sum = 0;
+        for (int n : fibo ) {
+            sum = sum + n;
+        }
+
+        System.out.println("\nЗадание 3");
+        System.out.println("Последовательности Фибоначчи равна: "+fibo.toString());
+        System.out.println("Сумма 20 первых чисел последовательности Фибоначчи равна: "+sum);
+
+
         /*
          * TODO(Студент): Выполнить задание №3
          *
