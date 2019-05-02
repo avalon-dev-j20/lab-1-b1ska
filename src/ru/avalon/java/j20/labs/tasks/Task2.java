@@ -1,6 +1,7 @@
 package ru.avalon.java.j20.labs.tasks;
 
 import ru.avalon.java.j20.labs.Task;
+import ru.avalon.java.j20.labs.models.Point;
 
 /**
  * Задание №2.
@@ -14,6 +15,18 @@ public class Task2 implements Task {
      */
     @Override
     public void run() {
+
+
+
+
+        Point<Float> fPoint = new Point<>(1.2f, 2.4f);
+        Point<Integer> iPoint = new Point<>(5,6);
+
+        double d = fPoint.distanceTo(iPoint);
+        System.out.println("\nЗадание 2");
+        System.out.println("Дистанция между точками равна: "+d);
+
+
         /*
          * TODO(Студент): Выполнять задание №2
          *
