@@ -1,6 +1,9 @@
 package ru.avalon.java.j20.labs.models;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Модель получения последовательности чисел Фибоначчи.
@@ -18,45 +21,71 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
 
+    private static List<Integer> fiboArray = new ArrayList<>();
+
+    public Fibonacci(int lenght) {
+        fiboArray.add(0, 0);
+        fiboArray.add(1, 1);
+
+        for (int i = 2; i < lenght; i++) {
+            fiboArray.add(i, fiboArray.get(i - 1) + fiboArray.get(i - 2));
+        }
+
+    }
+
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
-    private static class FibonacciIterator implements Iterator<Integer> {
 
-        /**
-         * Определяет, есть ли следующее значение
-         * последовательности чисел Фибоначчи.
-         *
-         * @return {@code true}, если следующее число
-         * последовательности существует. В обратном случае
-         * {@code false}.
-         */
-        @Override
-        public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
-        }
-
-        /**
-         * Возвращает следующее число последовательности
-         * чисел Фибоначчи.
-         *
-         * @return следующее число последовательности.
-         */
-        @Override
-        public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
-        }
-    }
-
-    /**
-     * Возвращает итератор, позволяющий выполнить обход
-     * последовательности чисел Фибоначчи.
-     *
-     * @return итератор последовательности чисел Фибоначчи
-     */
+    // private static class FibonacciIterator implements Iterator<Integer> {
     @Override
     public Iterator<Integer> iterator() {
-        return new FibonacciIterator();
+
+        /**
+         * Возвращает итератор, позволяющий выполнить обход
+         * последовательности чисел Фибоначчи.
+         *
+         * @return итератор последовательности чисел Фибоначчи
+         */
+
+        return new Iterator<Integer>() {
+            private int i = 0;
+
+            /**
+             * Определяет, есть ли следующее значение
+             * последовательности чисел Фибоначчи.
+             *
+             * @return {@code true}, если следующее число
+             * последовательности существует. В обратном случае
+             * {@code false}.
+             */
+
+            @Override
+            public boolean hasNext() {
+                return i < fiboArray.size() && fiboArray.get(i) != null;
+            }
+
+            /**
+             * Возвращает следующее число последовательности
+             * чисел Фибоначчи.
+             *
+             * @return следующее число последовательности.
+             */
+            @Override
+            public Integer next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return fiboArray.get(i++);
+            }
+        };
     }
+
+
+        @Override
+        public String toString () {
+            return fiboArray.toString();
+        }
+
 }
